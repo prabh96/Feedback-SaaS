@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h3 class="col-sm-4 col-md-4 control-label text-left">Log in to Give Feedback</h3>
+  {% if form.errors %}
+    <p style="color: red">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  <form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% for field in form %}
+      <p class="col-sm-4 col-md-4 control-label text-left">
+        {{ field.label_tag }}<br>
+        {{ field }}<br>
+        {% for error in field.errors %}
+          <p style="color: red" class="col-sm-4 col-md-4 control-label text-left">{{ error }}</p>
+        {% endfor %}
+        {% if field.help_text %}
+          <p><small style="color: grey">{{ field.help_text }}</small></p>
+        {% endif %}
+      </p>
+    {% endfor %}
+    <p class="col-sm-4 col-md-4 control-label text-left">
+        <button type="submit" class="btn btn-primary" >Log in</button>
+        <a href="{% url 'signup' %}">Not Registered? Sign up</a>
+    </p>
+    
+  </form>
+{% endblock %}

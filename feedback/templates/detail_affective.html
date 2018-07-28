@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+	{% block content %}
+	<div class="col-sm-7 col-md-7">
+		<p>Your email address: {{ user.email }}</p>
+	</div>
+
+	
+		{% csrf_token %}
+		<label for="affective" class="col-sm-4 col-md-4 control-label text-right">
+			<h3>Affective</h3>
+	    </label>
+		
+		<input type="hidden" id='a1' name='f1' value="{{url.url_text}}" />
+	<div class="col-sm-7 col-md-7">
+		<button type="submit"  class="btn btn-primary" name="aff_choices" value="Boring">Boring<span class="badge badge-light">{{boring_count}}</span></button>
+		<button type="submit"  class="btn btn-primary" name="aff_choices" value="Confusing">Confusing<span class="badge badge-light">{{confusing_count}}</span></button>
+		<button type="submit"  class="btn btn-primary" name="aff_choices" value="Engaging">Engaging<span class="badge badge-light">{{engaging_count}}</span></button>
+	</div>
+
+	<br><br>
+	<form name='Cog' method="post" action="{% url 'submit_cognitive' %}" id="Cog">
+		{% csrf_token %}
+		<label for="cognitive" class="col-sm-4 col-md-4 control-label text-right">
+			<h3>Cognitive</h3>
+	    </label>
+		<input type="hidden" id='a2' name='f2' value="{{url.url_text}}"/>
+	<div class="col-sm-7 col-md-7">
+		<button  type="submit" class="btn btn-primary" name="cog_choices" value="Difficult">Difficult<span class="badge badge-light active">{{difficult_count}}</span></button>
+		<button  type="submit" class="btn btn-primary" name="cog_choices" value="Easy">Easy<span class="badge badge-light active">{{easy_count}}</span></button>
+	</div>
+	</form>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+	//var url1=document.getElementById('results').value;
+$('#one').on('click', function(){
+    $.ajax(
+    {
+        type:$(this).attr('method'),
+        url: $(this).attr('action'),
+        data:$(this).serialize(),//+"&url="+url1,
+        success: function(response) 
+        {
+	    $('#Aff').replaceWith(response);
+        }
+     })
+	return false;
+});
+$('#two').on('click', function(){
+    $.ajax(
+    {
+        type:$(this).attr('method'),
+        url: $(this).attr('action'),
+        data:$(this).serialize(),//{}
+        success: function(response) 
+        {
+	    $('#Cog').replaceWith(response);
+        }
+     })
+	return false;
+});
+
+</script>
+{% endblock %}

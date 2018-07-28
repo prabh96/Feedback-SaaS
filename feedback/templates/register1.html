@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{% block title %}Meaningful Feedback{% endblock %}</title>
+		<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+			<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+			<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+			<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+		</head>
+		
+		<body>
+			
+			<form method="post" name="register1" action="{% url 'create_url' %}">
+				{% csrf_token %}
+				
+				<br/><br/>
+				
+				<div class="w3-display-middle control-label text-center">
+					<h2>Meaningful Feedback</h2>
+					<br>
+				</div>
+				<div class="core">
+						<div class="box" style="background-color:rgb(230, 196, 196)">
+							<div class="text"> <h3>About</h3><br/>
+								<p>The meaningful feedback app is a web application for achieving feedback from different online learning websites on the usefulness 
+									of its content. The app can be embedded on the publisher's website with an auto generated iframe link. Once embedded a user can sign-up/log into the app and 
+									vote on the two options- Affective and Cognitive with their respective choices. Each user can vote only once after which the total number of votes 
+									recorded for the website are displayed.
+							   </p></div>
+						</div>
+						<div class="box" style="background-color:rgb(220, 99, 99)">
+							<div class="text"><h3>Video</h3></div>
+							<p align="center"><iframe src='//www.appdemostore.com/embed?id=5914952817704960' width='400' height='200' frameborder='0'></iframe></p>
+						</div>
+						
+						</div>
+				<br><br>
+				
+				<div class="w3-display-middle control-label text-center">
+					<h4>Name of Publisher :  <input type="text" class="well well-sm" name="pub_name" id="pub_id"><br></h4>
+					<h4>Url Name :  <input type="text" class="well well-sm" name="url_name" id="url_id"></h4>
+					<h4>Email Address :  <input type="text" class="well well-sm" name="url_name" id="url_id"></h4><br>
+					<input type="submit" class="btn btn-primary" name="submit_pub">
+				</div> 
+			</form>
+			
+			
+		<style>
+		* {
+			box-sizing: border-box;
+		}
+		.core {width: 100%; display: table; border-spacing: 10px;}
+		
+		.box{
+			background-color: coral;
+			width: 32.03125%; 
+			float:none;
+			display: table-cell;
+			border-radius:5px;
+		}
+		.text{
+			padding: 10px;
+			color:black;
+			font-weight:bold;
+			text-align:center;
+		}
+		
+		</style>
+    </body>
+</html>

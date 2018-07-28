@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}Meaningful Feedback{% endblock %}</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  </head>
+  <body>
+    <header>
+        <h2 class="col-sm-4 col-md-4 control-label text-center">Welcome <small>{{ user.username }}</small>!</h2>
+        <!--<p>Your email address: {{ user.email }}</p>-->
+      {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}" class="col-sm-4 col-md-4 control-label text-center">logout</a>
+        
+      {% endif %}
+      <hr>
+    </header>
+    
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>
